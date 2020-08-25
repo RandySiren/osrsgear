@@ -5,13 +5,13 @@ import GetURLButtonImage from '../assets/images/GetURLButton.png';
 
 export interface GetURLButtonProps {}
 
-const GetURLButton: React.SFC<GetURLButtonProps> = (props) => {
+const GetURLButton: React.FC<GetURLButtonProps> = (props) => {
     return (
         <img
             className={classes.GetURLButtonImage}
             src={GetURLButtonImage}
             alt='alt'
-        ></img>
+        />
     );
 };
 
