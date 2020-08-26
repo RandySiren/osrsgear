@@ -5,7 +5,7 @@ import GetURLButtonImage from '../assets/images/GetURLButton.png';
 
 export interface GetURLButtonProps {}
 
-const GetURLButton: React.FC<GetURLButtonProps> = (props) => {
+const GetURLButton: React.FC<GetURLButtonProps> = () => {
     return (
         <img
             className={classes.GetURLButtonImage}
