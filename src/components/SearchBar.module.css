@@ -1,2 +1,11 @@
 .SearchBar {
 }
+
+.SearchBar input {
+    width: 500px;
+}
+
+.Suggestions {
+    list-style: none;
+    background-color: rebeccapurple;
+}
