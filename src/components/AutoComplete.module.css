@@ -2,14 +2,5 @@
 }
 
 .SearchBar input {
-    width: 500px;
-}
-
-.Suggestions {
-    list-style: none;
-    background-color: rebeccapurple;
-}
-
-.Active {
-    background-color: red;
+    width: 485px;
 }

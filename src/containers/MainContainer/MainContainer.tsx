@@ -3,6 +3,7 @@ import classes from './MainContainer.module.css';
 import { getURL } from '../../api/index';
 
 import AutoComplete from '../../components/AutoComplete';
+import GearInterface from '../../components/GearInterface';
 
 export interface MainContainerProps {}
 
@@ -30,6 +31,8 @@ const MainContainer: React.FC<MainContainerProps> = () => {
                 return item.toLowerCase().indexOf(input.toLowerCase()) > -1;
             });
             setSuggestions(filteredSuggestions);
+        } else {
+            setSuggestions([]);
         }
     }, [input, items]);
 
@@ -48,6 +51,7 @@ const MainContainer: React.FC<MainContainerProps> = () => {
                 suggestions={suggestions}
                 itemReceived={(item: any) => setItem(item)}
             />
+            <GearInterface />
         </div>
     );
 };

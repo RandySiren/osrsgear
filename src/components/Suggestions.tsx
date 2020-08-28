@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './AutoComplete.module.css';
+import classes from './Suggestions.module.css';
 
 export interface AutoCompleteProps {
     suggestions: string[] | undefined;

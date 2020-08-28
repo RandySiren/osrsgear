@@ -4,5 +4,7 @@
     padding: 0px 25px;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
+    flex-flow: column;
     justify-content: center;
+    align-items: center;
 }

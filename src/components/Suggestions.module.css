@@ -1,0 +1,17 @@
+.Suggestions {
+    list-style: none;
+    max-height: 200px;
+    overflow-y: scroll;
+    margin-top: 0;
+    margin-left: 0;
+    padding-left: 3px;
+    padding-right: 0;
+    width: 500px;
+    z-index: 1;
+    position: fixed;
+    background-color: slateblue;
+}
+
+.Active {
+    background-color: saddlebrown;
+}

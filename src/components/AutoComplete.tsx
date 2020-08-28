@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Suggestions from './Suggestions';
 
 import classes from './AutoComplete.module.css';
+import suggestionClasses from './Suggestions.module.css';
 
 export interface SearchBarProps {
     suggestions?: string[];
@@ -27,16 +28,28 @@ const SearchBar: React.FC<SearchBarProps> = ({
                 setActive(active + 1);
             } else if (
                 // Key Enter
-                e.keyCode === 13 &&
-                active >= 0 &&
-                active < suggestions?.length
+                e.keyCode === 13
             ) {
-                // Handle selection
-                const element = document.getElementsByClassName(classes.Active);
-                if (element) {
+                if (active >= 0 && active < suggestions?.length) {
+                    // Handle selection
+                    const element = document.getElementsByClassName(
+                        suggestionClasses.Active
+                    );
+                    if (element) {
+                        setVisible(false);
+                        /**
+                         * RETURN SELECTED ITEM
+                         */
+                        itemReceived(element[0].innerHTML);
+                    }
+                } else {
                     setVisible(false);
-                    itemReceived(element[0].innerHTML);
+                    setActive(-1);
                 }
+            } else if (e.keyCode === 27) {
+                // Key Escape
+                setVisible(false);
+                setActive(-1);
             } else {
                 // Any other key, reset active and let it be visible
                 setVisible(true);
@@ -54,6 +67,9 @@ const SearchBar: React.FC<SearchBarProps> = ({
         // Handle selection
         const element = e.target as HTMLElement;
         setVisible(false);
+        /**
+         * RETURN SELECTED ITEM
+         */
         itemReceived(element.innerHTML);
     };
 
