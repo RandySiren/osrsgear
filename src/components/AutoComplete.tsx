@@ -8,12 +8,14 @@ export interface SearchBarProps {
     suggestions?: string[];
     onInputChange: React.FormEventHandler<HTMLInputElement>;
     itemReceived: Function;
+    ref: ?;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
     suggestions,
     onInputChange,
     itemReceived,
+    ref
 }) => {
     const [active, setActive] = useState<number>(-1);
     const [visible, setVisible] = useState<boolean>(true);
@@ -88,4 +90,4 @@ const SearchBar: React.FC<SearchBarProps> = ({
     );
 };
 
-export default SearchBar;
+export default React.forwardRef<React.FC<SearchBarProps>>(SearchBar);
