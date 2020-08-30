@@ -8,8 +8,6 @@ export interface AutoCompleteProps {
     active: number;
     onMouseHover: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
     onMouseClick: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
-    refProp: React.MutableRefObject<any>;
-    refProp2: React.MutableRefObject<any>;
 }
 
 const AutoComplete: React.FC<AutoCompleteProps> = ({
@@ -17,13 +15,11 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
     active,
     onMouseHover,
     onMouseClick,
-    refProp,
-    refProp2,
 }) => {
     let element: React.ReactNode | null = null;
     if (suggestions) {
         element = (
-            <ul ref={refProp2} className={classes.Suggestions}>
+            <ul className={classes.Suggestions}>
                 {suggestions.map((item, index) => {
                     let classString: string = '';
 
@@ -31,11 +27,6 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({
                     return (
                         <li
                             id={index + ''}
-                            ref={
-                                classString.indexOf(classes.Active) !== -1
-                                    ? refProp
-                                    : null
-                            }
                             key={index}
                             className={classString}
                             onMouseOver={onMouseHover}
