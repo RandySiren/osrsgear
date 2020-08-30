@@ -4,10 +4,17 @@ import { getURL } from '../../api/index';
 
 import AutoComplete from '../../components/AutoComplete';
 import GearInterface from '../../components/GearInterface';
+import GetURLButton from '../../components/GetURLButton';
 
-export interface MainContainerProps {}
+export interface MainContainerProps {
+    visible: boolean;
+    setVisible: Function;
+}
 
-const MainContainer: React.FC<MainContainerProps> = () => {
+const MainContainer: React.FC<MainContainerProps> = ({
+    visible,
+    setVisible,
+}) => {
     const [input, setInput] = useState<string>(''); // Search bar input state
     const [items, setItems] = useState<string[]>([]); // All items
     const [item, setItem] = useState<any>(''); // Current item selected
@@ -46,12 +53,16 @@ const MainContainer: React.FC<MainContainerProps> = () => {
 
     return (
         <div className={classes.MainContainer}>
+            <h1>OSRS Gear</h1>
             <AutoComplete
                 onInputChange={onInputChange}
                 suggestions={suggestions}
                 itemReceived={(item: any) => setItem(item)}
+                visible={visible}
+                setVisible={setVisible}
             />
             <GearInterface />
+            <GetURLButton />
         </div>
     );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Suggestions from './Suggestions';
 
 import classes from './AutoComplete.module.css';
@@ -8,30 +8,39 @@ export interface SearchBarProps {
     suggestions?: string[];
     onInputChange: React.FormEventHandler<HTMLInputElement>;
     itemReceived: Function;
-    ref: ?;
+    visible: boolean;
+    setVisible: Function;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
     suggestions,
     onInputChange,
     itemReceived,
-    ref
+    visible,
+    setVisible,
 }) => {
     const [active, setActive] = useState<number>(-1);
-    const [visible, setVisible] = useState<boolean>(true);
+    const myRef = useRef<any>(null);
+    const myRef2 = useRef<any>(null);
+
+    const executeScroll = (ref: any, ref2: any) => {
+        ref2.current.scrollTo(0, ref.current.offsetTop);
+    };
 
     const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (suggestions && suggestions.length > 0) {
             if (e.keyCode === 38 && active > 0) {
                 // Key Up
                 setActive(active - 1);
+                if (myRef.current !== null && myRef2.current !== null)
+                    executeScroll(myRef, myRef2);
             } else if (e.keyCode === 40 && active < suggestions?.length - 1) {
                 // Key Down
                 setActive(active + 1);
-            } else if (
+                if (myRef.current !== null && myRef2.current !== null)
+                    executeScroll(myRef, myRef2);
+            } else if (e.keyCode === 13) {
                 // Key Enter
-                e.keyCode === 13
-            ) {
                 if (active >= 0 && active < suggestions?.length) {
                     // Handle selection
                     const element = document.getElementsByClassName(
@@ -84,10 +93,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
                     active={active}
                     onMouseHover={onMouseHover}
                     onMouseClick={onMouseClick}
+                    refProp={myRef}
+                    refProp2={myRef2}
                 />
             ) : null}
         </div>
     );
 };
 
-export default React.forwardRef<React.FC<SearchBarProps>>(SearchBar);
+export default SearchBar;
