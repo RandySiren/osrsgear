@@ -5,10 +5,12 @@ import { Slot } from '../util/SlotTypes';
 
 import image1 from '../assets/images/EquipmentBackground.png';
 
-export interface GearInterfaceProps {}
+export interface GearInterfaceProps {
+    onSlotChange: (arg0: Slot) => void;
+}
 
-const GearInterface: React.FC<GearInterfaceProps> = () => {
-    const [activeSlot, setActiveSlot] = useState<Slot>(null);
+const GearInterface: React.FC<GearInterfaceProps> = ({ onSlotChange }) => {
+    const [activeSlot, setActiveSlot] = useState<Slot>('null');
     const slots = [
         ['head', classes.HeadSlot],
         ['cape', classes.CapeSlot],
@@ -25,9 +27,12 @@ const GearInterface: React.FC<GearInterfaceProps> = () => {
 
     const clicked = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const element = e.target as HTMLButtonElement;
-        if (element.classList.contains(classes.active))
-            return setActiveSlot(null);
+        if (element.classList.contains(classes.active)) {
+            onSlotChange('null');
+            return setActiveSlot('null');
+        }
         setActiveSlot(element.id as Slot);
+        onSlotChange(element.id as Slot);
     };
 
     useEffect(() => {}, [activeSlot]);

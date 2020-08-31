@@ -10,4 +10,4 @@ export type Slot =
     | 'hands'
     | 'boots'
     | 'ring'
-    | null;
+    | 'null';

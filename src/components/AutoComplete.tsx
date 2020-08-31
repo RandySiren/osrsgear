@@ -10,6 +10,7 @@ export interface SearchBarProps {
     itemReceived: Function;
     visible: boolean;
     setVisible: Function;
+    enable: boolean;
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({
@@ -18,6 +19,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
     itemReceived,
     visible,
     setVisible,
+    enable,
 }) => {
     const [active, setActive] = useState<number>(-1);
 
@@ -76,7 +78,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
 
     return (
         <div className={classes.SearchBar}>
-            <input type='text' onChange={onInputChange} onKeyDown={onKeyDown} />
+            <input
+                type='text'
+                onChange={onInputChange}
+                onKeyDown={onKeyDown}
+                disabled={!enable}
+            />
             {visible ? (
                 <Suggestions
                     suggestions={suggestions}
