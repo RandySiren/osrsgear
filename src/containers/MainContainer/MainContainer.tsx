@@ -22,6 +22,19 @@ const MainContainer: React.FC<MainContainerProps> = ({
     const [suggestions, setSuggestions] = useState<string[]>([]); // Autocomplete suggestions array
     const [itemData, setItemData] = useState<{ [unit: string]: string[] }>({});
     const [activeSlot, setActiveSlot] = useState<Slot>('null');
+    const [activeItems, setActiveItems] = useState<{ [unit: string]: Slot }>({
+        head: 'null',
+        cape: 'null',
+        neck: 'null',
+        ammo: 'null',
+        weapon: 'null',
+        body: 'null',
+        shield: 'null',
+        legs: 'null',
+        hands: 'null',
+        boots: 'null',
+        ring: 'null',
+    });
 
     // When input element is changed
     const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -30,6 +43,10 @@ const MainContainer: React.FC<MainContainerProps> = ({
 
     const onSlotChange = (slot: Slot) => {
         setActiveSlot(slot);
+        const element = document.getElementsByTagName('input')[0];
+        if (element !== null && !element.disabled) {
+            element.value = '';
+        }
     };
 
     useEffect(() => {
@@ -38,8 +55,9 @@ const MainContainer: React.FC<MainContainerProps> = ({
 
     useEffect(() => {
         if (item) {
-            console.log(item);
+            setActiveItems({ ...activeItems, [activeSlot]: item });
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [item]);
 
     // When input state is changed
@@ -73,7 +91,10 @@ const MainContainer: React.FC<MainContainerProps> = ({
                 setVisible={setVisible}
                 enable={activeSlot !== 'null'}
             />
-            <GearInterface onSlotChange={onSlotChange} />
+            <GearInterface
+                onSlotChange={onSlotChange}
+                activeItems={activeItems}
+            />
             <GetURLButton />
         </div>
     );

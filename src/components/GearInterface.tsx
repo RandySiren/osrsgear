@@ -7,9 +7,13 @@ import image1 from '../assets/images/EquipmentBackground.png';
 
 export interface GearInterfaceProps {
     onSlotChange: (arg0: Slot) => void;
+    activeItems: { [unit: string]: Slot };
 }
 
-const GearInterface: React.FC<GearInterfaceProps> = ({ onSlotChange }) => {
+const GearInterface: React.FC<GearInterfaceProps> = ({
+    onSlotChange,
+    activeItems,
+}) => {
     const [activeSlot, setActiveSlot] = useState<Slot>('null');
     const slots = [
         ['head', classes.HeadSlot],
