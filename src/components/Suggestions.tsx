@@ -1,8 +1,6 @@
 import React from 'react';
 import classes from './Suggestions.module.css';
 
-import { nanoid } from 'nanoid';
-
 export interface AutoCompleteProps {
     suggestions: string[] | undefined;
     active: number;

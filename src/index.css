@@ -1,3 +1,22 @@
+@font-face {
+    font-family: 'RuneScape-UF';
+    src: url('fonts/runescapeuf.eot'); /* IE9 Compat Modes */
+    src: url('fonts/runescapeuf.eot?#iefix') format('embedded-opentype'),
+        /* IE6-IE8 */ url('fonts/runescapeuf.otf') format('opentype'),
+        /* Open Type Font */ url('fonts/runescapeuf.svg') format('svg'),
+        /* Legacy iOS */ url('fonts/runescapeuf.ttf') format('truetype'),
+        /* Safari, Android, iOS */ url('fonts/runescapeuf.woff') format('woff'),
+        /* Modern Browsers */ url('fonts/runescapeuf.woff2') format('woff2'); /* Modern Browsers */
+    font-weight: normal;
+    font-style: normal;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
 html,
 body {
     margin: 0px;

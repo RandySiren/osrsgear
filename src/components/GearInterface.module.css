@@ -1,2 +1,83 @@
 .GearInterface {
+    min-height: 550px;
+    width: 400px;
+}
+
+.GearBackground {
+    position: absolute;
+    z-index: 0;
+}
+
+.HeadSlot {
+    background-image: url('../assets/images/Head_slot.png');
+    margin: 21px 0px 0px 164px;
+}
+
+.CapeSlot {
+    background-image: url('../assets/images/Cape_slot.png');
+    margin: 98px 0px 0px 84px;
+}
+
+.NeckSlot {
+    background-image: url('../assets/images/Neck_slot.png');
+    margin: 98px 0px 0px 164px;
+}
+
+.AmmoSlot {
+    background-image: url('../assets/images/Ammo_slot.png');
+    margin: 98px 0px 0px 245px;
+}
+
+.WeaponSlot {
+    background-image: url('../assets/images/Weapon_slot.png');
+    margin: 174px 0px 0px 55px;
+}
+.BodySlot {
+    background-image: url('../assets/images/Body_slot.png');
+    margin: 174px 0px 0px 164px;
+}
+
+.ShieldSlot {
+    background-image: url('../assets/images/Shield_slot.png');
+    margin: 174px 0px 0px 275px;
+}
+
+.LegsSlot {
+    background-image: url('../assets/images/Legs_slot.png');
+    margin: 252px 0px 0px 165px;
+}
+
+.HandsSlot {
+    background-image: url('../assets/images/Hands_slot.png');
+    margin: 331px 0px 0px 55px;
+}
+
+.FeetSlot {
+    background-image: url('../assets/images/Feet_slot.png');
+    margin: 331px 0px 0px 165px;
+}
+
+.RingSlot {
+    background-image: url('../assets/images/Ring_slot.png');
+    margin: 331px 0px 0px 274px;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0);
+    background-size: cover;
+    height: 71px;
+    width: 71px;
+    padding: 0px;
+    position: fixed;
+    border: none;
+}
+
+.active {
+    transition: transform 0.2s;
+    transform: scale(1.2);
+}
+
+.inactive {
+    transition: transform 0.2s;
+    transform: scale(1);
 }
